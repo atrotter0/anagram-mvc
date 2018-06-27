@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using WordGame;
 
@@ -26,6 +27,31 @@ namespace WordGame.Tests
         }
 
         [TestMethod]
+        public void GetSetCharCounter_GetsSetsWordCounter_Int()
+        {
+            Anagram testAnagram = new Anagram();
+            testAnagram.IncrementCounter();
+            Assert.AreEqual(1, testAnagram.GetCounter());
+        }
+
+        [TestMethod]
+        public void GetSetSameLetters_SameLettersTrue_True()
+        {
+            Anagram testAnagram = new Anagram();
+            testAnagram.SameLettersTrue();
+            Assert.AreEqual(true, testAnagram.GetSameLetters());
+        }
+
+        [TestMethod]
+        public void GetSetWordToCompare_SetsWordToCompare_String()
+        {
+            Anagram testAnagram = new Anagram();
+            string word = "test";
+            testAnagram.SetWordToCompare(word);
+            Assert.AreEqual(word, testAnagram.GetWordToCompare());
+        }
+
+        [TestMethod]
         public void CharactersInWord_WordTurnedIntoCharArray_CharArray()
         {
             Anagram testAnagram = new Anagram();
@@ -35,14 +61,43 @@ namespace WordGame.Tests
         }
 
         [TestMethod]
-        public void AddWordToMatch_AddsWordsToMatchList_String()
+        public void AddAnagram_AddsWordsToMatchList_String()
         {
             Anagram testAnagram = new Anagram();
             string word = "gandalf";
-            char[] splitWord = word.ToCharArray();
             bool matchFlag = true;
-            testAnagram.AddWordToMatch(matchFlag, splitWord);
+            testAnagram.AddAnagram(matchFlag, word);
             Assert.AreEqual(word, testAnagram.GetWordMatches()[0]);
+        }
+
+        [TestMethod]
+        public void CheckLettersAreEqual_TestEachLetterIsEqual_Bool()
+        {
+            Anagram testAnagram = new Anagram();
+            char letterOne = 'f';
+            char letterTwo = 'f';
+            Assert.AreEqual(true, testAnagram.CheckLettersAreEqual(letterOne, letterTwo));
+        }
+
+        [TestMethod]
+        public void SortAndReturnWord_CharsAreSortedAndReturned_CharArray()
+        {
+            Anagram testAnagram = new Anagram();
+            string word = "frodo";
+            char[] splitWord = word.ToCharArray();
+            Array.Sort(splitWord);
+            CollectionAssert.AreEqual(splitWord, testAnagram.SortAndReturnChars(word));
+        }
+
+        [TestMethod]
+        public void CheckForAnagram_AddAnagramToMatchList_List()
+        {
+            Anagram testAnagram = new Anagram();
+            testAnagram.SetUserWords("bread");
+            testAnagram.SetUserWords("beard");
+            testAnagram.SetUserWords("kiwi");
+            testAnagram.CheckForAnagram();
+            Assert.AreEqual(testAnagram.GetUserWords()[1], testAnagram.GetWordMatches()[0]);
         }
     }
 }
