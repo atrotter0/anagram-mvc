@@ -1,0 +1,7 @@
+/Users/Guest/Desktop/WordGame.Solution/WordGame/bin/Debug/netcoreapp1.1/WordGame.deps.json
+/Users/Guest/Desktop/WordGame.Solution/WordGame/obj/Debug/netcoreapp1.1/WordGame.csproj.CoreCompileInputs.cache
+/Users/Guest/Desktop/WordGame.Solution/WordGame/obj/Debug/netcoreapp1.1/WordGame.AssemblyInfo.cs
+/Users/Guest/Desktop/WordGame.Solution/WordGame/bin/Debug/netcoreapp1.1/WordGame.dll
+/Users/Guest/Desktop/WordGame.Solution/WordGame/bin/Debug/netcoreapp1.1/WordGame.pdb
+/Users/Guest/Desktop/WordGame.Solution/WordGame/obj/Debug/netcoreapp1.1/WordGame.dll
+/Users/Guest/Desktop/WordGame.Solution/WordGame/obj/Debug/netcoreapp1.1/WordGame.pdb

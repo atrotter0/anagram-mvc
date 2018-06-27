@@ -1,16 +1,19 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using Translator;
+using WordGame;
 
 namespace WordGame.Tests
 {
     [TestClass]
-    public class Anagram
+    public class AnagramTest
     {
         [TestMethod]
-        public void Name()
+        public void GetSetUserWords_GetsSetsUserWords_StringList()
         {
-
+            Anagram testAnagram = new Anagram();
+            string word = "test";
+            testAnagram.SetUserWords(word);
+            Assert.AreEqual(word, testAnagram.GetUserWords()[0]);
         }
     }
 }
