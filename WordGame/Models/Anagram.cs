@@ -15,7 +15,22 @@ namespace WordGame
 
         public List<string> GetUserWords()
         {
-          return _userWords;
+            return _userWords;
+        }
+
+        public void SetWordMatches(string word)
+        {
+            this.GetWordMatches().Add(word);
+        }
+
+        public List<string> GetWordMatches()
+        {
+            return _wordMatches;
+        }
+
+        public char[] CharactersInWord(string word)
+        {
+            return word.ToCharArray();
         }
     }
 }
