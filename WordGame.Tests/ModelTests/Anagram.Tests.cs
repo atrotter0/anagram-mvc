@@ -33,5 +33,16 @@ namespace WordGame.Tests
             char[] wordSplit = { 'n', 'o', 'o', 'b' };
             CollectionAssert.AreEqual(wordSplit, testAnagram.CharactersInWord(word));
         }
+
+        [TestMethod]
+        public void AddWordToMatch_AddsWordsToMatchList_String()
+        {
+            Anagram testAnagram = new Anagram();
+            string word = "gandalf";
+            char[] splitWord = word.ToCharArray();
+            bool matchFlag = true;
+            testAnagram.AddWordToMatch(matchFlag, splitWord);
+            Assert.AreEqual(word, testAnagram.GetWordMatches()[0]);
+        }
     }
 }

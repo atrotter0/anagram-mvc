@@ -28,6 +28,38 @@ namespace WordGame
             return _wordMatches;
         }
 
+        // public void CheckForAnagram()
+        // {
+        //     int charCounter = 0;
+        //     bool sameLetters = true;
+        //     for(int i = 0; i < this.GetUserWords().Length; i++)
+        //     {
+        //         char[] firstWordLetters = this.CharactersInWord(this.GetUserWords()[i]);
+        //         firstWordLetters.Sort();
+        //         for(int j = 1; i < this.GetUserWords().Length; j++)
+        //         {
+        //             char[] secondWordLetters = this.CharactersInWord(this.GetUserWords()[j]);
+        //             secondWordLetters.Sort();
+        //
+        //             if (firstWordLetters[charCounter] != secondWordLetters[charCounter])
+        //             {
+        //                 sameLetters = false;
+        //             }
+        //             charCounter++;
+        //         }
+        //         this.AddWordToMatch(sameLetters);
+        //     }
+        // }
+
+        public void AddWordToMatch(bool sameLetters, char[] secondWordLetters)
+        {
+            if (sameLetters)
+            {
+                string newWord = new string(secondWordLetters);
+                this.SetWordMatches(newWord);
+            }
+        }
+
         public char[] CharactersInWord(string word)
         {
             return word.ToCharArray();
