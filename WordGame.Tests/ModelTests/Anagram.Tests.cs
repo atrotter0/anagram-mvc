@@ -65,18 +65,20 @@ namespace WordGame.Tests
         {
             Anagram testAnagram = new Anagram();
             string word = "gandalf";
-            bool matchFlag = true;
-            testAnagram.AddAnagram(matchFlag, word);
+            testAnagram.SetWordToCompare(word);
+            testAnagram.SameLettersTrue();
+            testAnagram.AddAnagram();
             Assert.AreEqual(word, testAnagram.GetWordMatches()[0]);
         }
 
         [TestMethod]
-        public void CheckLettersAreEqual_TestEachLetterIsEqual_Bool()
+        public void CheckLettersAreEqual_TestEachLetterIsEqual_True()
         {
             Anagram testAnagram = new Anagram();
             char letterOne = 'f';
             char letterTwo = 'f';
-            Assert.AreEqual(true, testAnagram.CheckLettersAreEqual(letterOne, letterTwo));
+            testAnagram.CheckLettersAreEqual(letterOne, letterTwo);
+            Assert.AreEqual(true, testAnagram.GetSameLetters());
         }
 
         [TestMethod]

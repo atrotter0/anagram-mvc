@@ -8,7 +8,7 @@ namespace WordGame
         private List<string> _userWords = new List<string>() {};
         private List<string> _wordMatches = new List<string>() {};
         private int _charCounter = 0;
-        private bool _sameLetters = false;
+        private bool _sameLetters = true;
         private string _wordToCompare = "";
 
         public void SetUserWords(string word)
@@ -63,19 +63,16 @@ namespace WordGame
 
         public void CheckForAnagram()
         {
-            int charCounter = 0;
-            bool sameLetters = true;
-            string originalWord = "";
             char[] firstWordLetters = this.SortAndReturnChars(this.GetUserWords()[0]);
             for(int j = 1; j < this.GetUserWords().Count; j++)
             {
-                originalWord = this.GetUserWords()[j];
+                this.SetWordToCompare(GetUserWords()[j]);
                 char[] secondWordLetters = this.SortAndReturnChars(this.GetUserWords()[j]);
                 if (secondWordLetters.Length == firstWordLetters.Length)
                 {
-                    sameLetters = this.CheckLettersAreEqual(firstWordLetters[charCounter], secondWordLetters[charCounter]);
-                    charCounter++;
-                    this.AddAnagram(sameLetters, originalWord);
+                    this.CheckLettersAreEqual(firstWordLetters[this.GetCounter()], secondWordLetters[this.GetCounter()]);
+                    IncrementCounter();
+                    this.AddAnagram();
                 }
             }
             for (int k = 0; k < this.GetWordMatches().Count; k++)
@@ -91,16 +88,14 @@ namespace WordGame
             return lettersOfWord;
         }
 
-        public bool CheckLettersAreEqual(char letterOne, char letterTwo)
+        public void CheckLettersAreEqual(char letterOne, char letterTwo)
         {
-            bool sameLetters = true;
-            if (letterOne != letterTwo) sameLetters = false;
-            return sameLetters;
+            if (letterOne != letterTwo) SameLettersTrue();
         }
 
-        public void AddAnagram(bool sameLetters, string originalWord)
+        public void AddAnagram()
         {
-            if (sameLetters) this.SetWordMatches(originalWord);
+            if (this.GetSameLetters()) this.SetWordMatches(this.GetWordToCompare());
         }
 
         public char[] CharactersInWord(string word)
