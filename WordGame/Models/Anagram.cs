@@ -41,15 +41,22 @@ namespace WordGame
         //             char[] secondWordLetters = this.CharactersInWord(this.GetUserWords()[j]);
         //             secondWordLetters.Sort();
         //
-        //             if (firstWordLetters[charCounter] != secondWordLetters[charCounter])
-        //             {
-        //                 sameLetters = false;
-        //             }
+        //             sameLetters = this.CheckLettersAreEqual(firstWordLetters[charCounter], secondWordLetters[charCounter])
         //             charCounter++;
         //         }
         //         this.AddWordToMatch(sameLetters);
         //     }
         // }
+
+        public bool CheckLettersAreEqual(char letterOne, char letterTwo)
+        {
+            bool sameLetters = true;
+            if (letterOne != letterTwo)
+            {
+                sameLetters = false;
+                return sameLetters;
+            }
+        }
 
         public void AddWordToMatch(bool sameLetters, char[] secondWordLetters)
         {
