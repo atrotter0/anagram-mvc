@@ -8,7 +8,7 @@ namespace WordGame
         private List<string> _userWords = new List<string>() {};
         private List<string> _wordMatches = new List<string>() {};
         private int _charCounter = 0;
-        private bool _sameLetters = true;
+        private bool _sameLetters = false;
         private string _wordToCompare = "";
 
         public void SetUserWords(string word)
@@ -61,6 +61,33 @@ namespace WordGame
             _wordToCompare = word;
         }
 
+        public void RunGame()
+        {
+            this.DisplayPrompt();
+            this.CaptureUserInput();
+            this.CheckForAnagram();
+            this.DisplayResults();
+        }
+
+        public void DisplayPrompt()
+        {
+            Console.WriteLine("ANAGRAM GAME");
+            Console.WriteLine("1. Enter your main word and hit enter.");
+            Console.WriteLine("2. Enter another word that could be an anagram of your main word and hit enter.");
+            Console.WriteLine("3. Enter another word that could be an anagram of your main word and hit enter again...");
+            Console.WriteLine("4. Are you seeing a pattern? Type 'chicken dinner' to check for anagrams of the first word you entered!");
+        }
+
+        public void CaptureUserInput()
+        {
+            string input = "";
+            while(input != "chicken dinner")
+            {
+                input = Console.ReadLine();
+                this.SetUserWords(input);
+            }
+        }
+
         public void CheckForAnagram()
         {
             char[] firstWordLetters = this.SortAndReturnChars(this.GetUserWords()[0]);
@@ -72,12 +99,7 @@ namespace WordGame
                 {
                     this.CheckLettersAreEqual(firstWordLetters[this.GetCounter()], secondWordLetters[this.GetCounter()]);
                     IncrementCounter();
-                    this.AddAnagram();
                 }
-            }
-            for (int k = 0; k < this.GetWordMatches().Count; k++)
-            {
-              Console.WriteLine(this.GetWordMatches()[k]);
             }
         }
 
@@ -90,7 +112,11 @@ namespace WordGame
 
         public void CheckLettersAreEqual(char letterOne, char letterTwo)
         {
-            if (letterOne != letterTwo) SameLettersTrue();
+            if (letterOne == letterTwo)
+            {
+              SameLettersTrue();
+              this.AddAnagram();
+            }
         }
 
         public void AddAnagram()
@@ -101,6 +127,24 @@ namespace WordGame
         public char[] CharactersInWord(string word)
         {
             return word.ToCharArray();
+        }
+
+        public void DisplayResults()
+        {
+            Console.WriteLine("Here are your anagrams of " + this.GetUserWords()[0] + ":");
+            for (int i = 0; i < this.GetWordMatches().Count; i++)
+            {
+                Console.WriteLine(this.GetWordMatches()[i]);
+            }
+        }
+    }
+
+    public class Program
+    {
+        static void Main()
+        {
+            Anagram myGame = new Anagram();
+            myGame.RunGame();
         }
     }
 }

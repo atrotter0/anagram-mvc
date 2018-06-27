@@ -27,7 +27,7 @@ namespace WordGame.Tests
         }
 
         [TestMethod]
-        public void GetSetCharCounter_GetsSetsWordCounter_Int()
+        public void GetIncrementCharCounter_GetsIncrementsWordCounter_Int()
         {
             Anagram testAnagram = new Anagram();
             testAnagram.IncrementCounter();
@@ -94,6 +94,7 @@ namespace WordGame.Tests
         [TestMethod]
         public void CheckForAnagram_AddAnagramToMatchList_List()
         {
+            //fix this test
             Anagram testAnagram = new Anagram();
             testAnagram.SetUserWords("bread");
             testAnagram.SetUserWords("beard");
