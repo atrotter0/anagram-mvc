@@ -21,7 +21,7 @@ namespace WordGame.Tests
         {
             Anagram newGame = new Anagram();
             newGame.SetWordList("This is a word list.");
-            Assert.AreEqual("This is a word list.", newGame.GetWordList());
+            Assert.AreEqual("this is a word list", newGame.GetWordList());
         }
 
         [TestMethod]
@@ -34,19 +34,11 @@ namespace WordGame.Tests
         }
 
         [TestMethod]
-        public void GetIncrementCharCounter_GetsIncrementsWordCounter_Int()
+        public void GetSetSameLetters_SameLettersTrue_False()
         {
             Anagram testAnagram = new Anagram();
-            testAnagram.IncrementCounter();
-            Assert.AreEqual(1, testAnagram.GetCounter());
-        }
-
-        [TestMethod]
-        public void GetSetSameLetters_SameLettersTrue_True()
-        {
-            Anagram testAnagram = new Anagram();
-            testAnagram.SameLettersTrue();
-            Assert.AreEqual(true, testAnagram.GetSameLetters());
+            testAnagram.SameLettersFalse();
+            Assert.AreEqual(false, testAnagram.GetSameLetters());
         }
 
         [TestMethod]
@@ -73,7 +65,6 @@ namespace WordGame.Tests
             Anagram testAnagram = new Anagram();
             string word = "gandalf";
             testAnagram.SetWordToCompare(word);
-            testAnagram.SameLettersTrue();
             testAnagram.AddAnagram();
             Assert.AreEqual(word, testAnagram.GetWordMatches()[0]);
         }
@@ -98,22 +89,15 @@ namespace WordGame.Tests
             CollectionAssert.AreEqual(splitWord, testAnagram.SortAndReturnChars(word));
         }
 
-        // [TestMethod]
-        // public void CheckForAnagram_AddAnagramToMatchList_List()
-        // {
-        //     //fix this test
-        //     Anagram testAnagram = new Anagram();
-        //     testAnagram.SetUserWords("bread");
-        //     testAnagram.SetUserWords("beard");
-        //     testAnagram.SetUserWords("kiwi");
-        //     testAnagram.CheckForAnagram();
-        //     Assert.AreEqual(testAnagram.GetUserWords()[1], testAnagram.GetWordMatches()[0]);
-        // }
-
-        // [TestMethod]
-        // public void FindAnagram_FindsAnAnagramInListOfWords_True()
-        // {
-        //     Anagram newGame = new Anagram();
-        // }
+        [TestMethod]
+        public void FindAnagram_FindsAnAnagramInListOfWords_List()
+        {
+            Anagram newGame = new Anagram();
+            newGame.SetBaseWord("red");
+            newGame.SetWordList("der red, edr dfsj dew red$%");
+            newGame.FindAnagram();
+            List<string> expectedResult = new List<string> { "der", "red", "edr", "red" };
+            CollectionAssert.AreEqual(expectedResult, newGame.GetWordMatches());
+        }
     }
 }

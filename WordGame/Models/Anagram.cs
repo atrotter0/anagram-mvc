@@ -7,8 +7,7 @@ namespace WordGame.Models
     {
         private string _baseWord;
         private string _wordList;
-        private int _charCounter = 0;
-        private bool _sameLetters = false;
+        private bool _sameLetters = true;
         private List<string> _wordMatches = new List<string>() {};
         private string _wordToCompare = "";
 
@@ -24,7 +23,8 @@ namespace WordGame.Models
 
         public void SetWordList(string newList)
         {
-            _wordList = newList;
+            string cleanedList = this.DowncaseAndScrub(newList);
+            _wordList = cleanedList;
         }
 
         public string GetWordList()
@@ -32,14 +32,9 @@ namespace WordGame.Models
             return _wordList;
         }
 
-        public void IncrementCounter()
+        public void SameLettersFalse()
         {
-            _charCounter++;
-        }
-
-        public int GetCounter()
-        {
-            return _charCounter;
+            _sameLetters = false;
         }
 
         public void SameLettersTrue()
@@ -72,7 +67,34 @@ namespace WordGame.Models
             _wordToCompare = word;
         }
 
-        // write new test for this
+        public string DowncaseAndScrub(string wordList)
+        {
+            string[] words = wordList.Split(' ');
+            for (int i = 0; i < words.Length; i++)
+            {
+                words[i] = this.ScrubPunctuation(words[i].ToLower());
+            }
+            string lowercaseAndScrubbed = string.Join(" ", words);
+            return lowercaseAndScrubbed;
+        }
+
+        public string ScrubPunctuation(string phrase)
+        {
+            char[] letters = phrase.ToCharArray();
+            List<char> lettersAndSpaces = new List<char>() {};
+            foreach (char letter in letters)
+            {
+                this.AddLettersAndSpaces(letter, lettersAndSpaces);
+            }
+            string scrubbedWord = string.Join("", lettersAndSpaces);
+            return scrubbedWord;
+        }
+
+        public void AddLettersAndSpaces(char letter, List<char> lettersAndSpaces)
+        {
+            if (Char.IsLetter(letter) || Char.IsWhiteSpace(letter)) lettersAndSpaces.Add(letter);
+        }
+
         public void FindAnagram()
         {
             char[] firstWordLetters = this.SortAndReturnChars(this.GetBaseWord());
@@ -83,8 +105,12 @@ namespace WordGame.Models
                 char[] secondWordLetters = this.SortAndReturnChars(word);
                 if (secondWordLetters.Length == firstWordLetters.Length)
                 {
-                  this.CheckLettersAreEqual(firstWordLetters[this.GetCounter()], secondWordLetters[this.GetCounter()]);
-                  this.IncrementCounter();
+                  this.SameLettersTrue();
+                  for (int i = 0; i < firstWordLetters.Length; i++)
+                  {
+                    this.CheckLettersAreEqual(firstWordLetters[i], secondWordLetters[i]);
+                  }
+                  this.AddAnagram();
                 }
             }
         }
@@ -103,10 +129,9 @@ namespace WordGame.Models
 
         public void CheckLettersAreEqual(char letterOne, char letterTwo)
         {
-            if (letterOne == letterTwo)
+            if (letterOne != letterTwo)
             {
-              this.SameLettersTrue();
-              this.AddAnagram();
+              this.SameLettersFalse();
             }
         }
 
