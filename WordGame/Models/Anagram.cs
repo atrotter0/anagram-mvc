@@ -13,7 +13,8 @@ namespace WordGame.Models
 
         public void SetBaseWord(string newWord)
         {
-            _baseWord = newWord;
+            string lowercaseWord = newWord.ToLower();
+            _baseWord = lowercaseWord;
           }
 
         public string GetBaseWord()
