@@ -1,19 +1,12 @@
-# Anagram Game
+# Anagrams with MVC
 
-#### Epicodus C# exercise, 06.27.18
+#### Epicodus C# exercise, 07.02.18
 
-#### By Abel Trotter & Elly Maimon
+#### By Abel Trotter & Ryan Putman
 
 ## Description
 
-A console app that allows a user to check if words are anagrams of an original word.
-
-## Specs
-
-| Behavior | Input | Output |
-|----------|-------|--------|
-| Program takes two words and returns an anagram. | boon, bono | bono |
-| Program takes a list of words and returns an anagram of original word. | boon, bono, test... | bono |
+A program that allows a user to fill out a form and display any Anagrams that exist for the given word.
 
 ## Setup on OSX
 
@@ -21,6 +14,7 @@ A console app that allows a user to check if words are anagrams of an original w
 * Download and install Mono
 * Clone the repo
 * Run `dotnet restore` from within the project directory
+* Run `dotnet run` to start the server
 
 ## Contribution Requirements
 
@@ -33,11 +27,8 @@ A console app that allows a user to check if words are anagrams of an original w
 
 * .Net Core 1.1.4
 
-## Links
-
-
 ## License
 
 This software is licensed under the MIT license.
 
-Copyright (c) 2018 **Abel Trotter & Elly Maimon**
+Copyright (c) 2018 **Abel Trotter & Ryan Putman**
