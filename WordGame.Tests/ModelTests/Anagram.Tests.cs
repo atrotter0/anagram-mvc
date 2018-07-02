@@ -109,5 +109,11 @@ namespace WordGame.Tests
         //     testAnagram.CheckForAnagram();
         //     Assert.AreEqual(testAnagram.GetUserWords()[1], testAnagram.GetWordMatches()[0]);
         // }
+
+        // [TestMethod]
+        // public void FindAnagram_FindsAnAnagramInListOfWords_True()
+        // {
+        //     Anagram newGame = new Anagram();
+        // }
     }
 }

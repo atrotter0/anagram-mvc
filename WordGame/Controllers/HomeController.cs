@@ -14,7 +14,11 @@ namespace WordGame.Controllers
       [Route("/anagram_results")]
       public ActionResult AnagramResults()
       {
-          return View();
+          Anagram newGame = new Anagram();
+          newGame.SetBaseWord(Request.Query["baseWord"]);
+          newGame.SetWordList(Request.Query["wordList"]);
+          newGame.FindAnagram();
+          return View(newGame);
       }
   }
 }
