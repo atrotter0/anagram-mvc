@@ -5,3 +5,5 @@
 /Users/Guest/Desktop/WordGame.Solution/WordGame/bin/Debug/netcoreapp1.1/WordGame.pdb
 /Users/Guest/Desktop/WordGame.Solution/WordGame/obj/Debug/netcoreapp1.1/WordGame.dll
 /Users/Guest/Desktop/WordGame.Solution/WordGame/obj/Debug/netcoreapp1.1/WordGame.pdb
+/Users/Guest/Desktop/WordGame.Solution/WordGame/bin/Debug/netcoreapp1.1/WordGame.runtimeconfig.json
+/Users/Guest/Desktop/WordGame.Solution/WordGame/bin/Debug/netcoreapp1.1/WordGame.runtimeconfig.dev.json

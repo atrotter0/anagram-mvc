@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+  <div class='container'>
+   <div class='jumbotron'>
+     <h1>Anagram 2.0</h1>
+   </div>
+   <div class='form'>
+     <p>Fill out the fields below and hit submit to find your anagrams:</p>
+     <form id='anagram-form' action='/anagram_results' method='get'>
+       <div class='form-group'>
+         <label for='baseWord'>Set your base word to check if anagrams exist:</label>
+         <input type='text' name='baseWord' id='baseWord' class='form-control'>
+       </div>
+       <div class='form-group'>
+         <label for='wordList'>Add a list of words separated by spaces to see if they are anagrams of the base word:</label>
+         <input type='text' name='wordList' id='wordList' class='form-control'>
+       </div>
+       <button type='submit' name='button' id='submit-form' class='btn btn-lg btn-info'>Find Anagrams</button>
+     </form>
+  </div>
